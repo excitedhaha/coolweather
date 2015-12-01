@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.wjb.coolweather.R;
+import com.example.wjb.coolweather.service.AutoUpdateService;
 import com.example.wjb.coolweather.util.HttpCallbackListener;
 import com.example.wjb.coolweather.util.HttpUtil;
 import com.example.wjb.coolweather.util.Utility;
@@ -51,6 +52,8 @@ public class WeatherActivity extends Activity implements View.OnClickListener{
         switchCity.setOnClickListener(this);
         refreshWeather.setOnClickListener(this);
         currentDateText=(TextView)findViewById(R.id.current_date);
+        Intent newIntent=new Intent(this,AutoUpdateService.class);
+        startService(newIntent);
         String countyCode=getIntent().getStringExtra("county_code");
         if (!TextUtils.isEmpty(countyCode)){
             Log.i("11112222","countyCode is "+countyCode);
